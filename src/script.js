@@ -13,8 +13,10 @@ async function fetchPokemon(pokemon){
   
     main.innerHTML += (
       `<div class="pokeCard card${type0}">
-      <p>${name}</p>
-      <img src="${urlImg}" alt="${name}">
+      <div class="infos">
+        <p>${name}</p>
+        <img src="${urlImg}" alt="${name}">
+      </div>
       <div class="divTypes">
       <span class="type ${type0}">${type0}</span>
       <span class="type ${type1}">${type1}</span>
@@ -25,8 +27,10 @@ async function fetchPokemon(pokemon){
   }else{
     main.innerHTML +=(
       `<div id="app" class="pokeCard card${type0}">
-      <p>${name}</p>
-      <img src="${urlImg}" alt="${name}">
+      <div class="infos">
+        <p>${name}</p>
+        <img src="${urlImg}" alt="${name}">
+      </div>
       <div class="divTypes">
       <span class="type ${type0}">${type0}</span>
       </div>

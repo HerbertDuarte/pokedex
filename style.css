@@ -113,10 +113,8 @@ header > div > img{
   font-weight: 600;
 }
 .pokeCard img{
-  height: 100%;
-  max-height: 130px;
-  margin: 20px 5px;
-
+  height: 160px;
+  margin: 10px 5px;
 }
 
 .type{
@@ -149,11 +147,34 @@ header > div > img{
 }
 @media (max-width:660px) {
   main{
-    width: 440px;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+  }
+  .pokeCard{
+    height: 180px;
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .divTypes{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+  }
+  .type{
+    font-size: 1.2em;
+  }
+  .pokeCard img{
+    margin: 0;
+    height: 140px;
   }
 }
-@media (max-width:440px) {
+@media (max-width:375px) {
   main{
-    width: 330px;
+    width: 100%;
   }
 }
