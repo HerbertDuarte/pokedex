@@ -15,7 +15,7 @@
   background-color: rgb(166, 166, 166);
 }
 ::-webkit-scrollbar-thumb:active{
-  background-color: rgb(225, 22, 22);
+  background-color: #d92424;
 }
 *{
   margin: 0;
