@@ -2,11 +2,12 @@ var main = document.getElementById('main')
 
 async function fetchPokemon(pokemon){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
+  const img = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`)
 
   const name = data.name[0].toUpperCase() + data.name.slice(1)
-  const img = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`)
   const urlImg = img.url
   const type0 = data.types[0].type.name
+  const pokeId = data.id
 
   if(data.types[1]){
     const type1 = data.types[1].type.name
@@ -14,7 +15,7 @@ async function fetchPokemon(pokemon){
     main.innerHTML += (
       `<div class="pokeCard card${type0}">
       <div class="infos">
-        <p>${name}</p>
+      <p>${pokeId}. ${name}</p>
         <img src="${urlImg}" alt="${name}">
       </div>
       <div class="divTypes">
@@ -28,7 +29,7 @@ async function fetchPokemon(pokemon){
     main.innerHTML +=(
       `<div id="app" class="pokeCard card${type0}">
       <div class="infos">
-        <p>${name}</p>
+      <p>${pokeId}. ${name}</p>
         <img src="${urlImg}" alt="${name}">
       </div>
       <div class="divTypes">

@@ -3,7 +3,7 @@
   src: url('./assets/PokemonSolid.ttf');
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap');
 
 ::-webkit-scrollbar{
   width: 10px;
@@ -110,7 +110,7 @@ header > div > img{
   font-size: 1.4em;
   color: rgba(0, 0, 0, 0.731);
   font-family: 'Nunito', Arial, Helvetica, sans-serif;  
-  font-weight: 600;
+  font-weight: 500;
 }
 .pokeCard img{
   height: 160px;
