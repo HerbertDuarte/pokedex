@@ -5,6 +5,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
 
+::-webkit-scrollbar{
+  width: 10px;
+  background-color: #FFf;
+}
+
+::-webkit-scrollbar-thumb{
+  width: 10px;
+  background-color: rgb(166, 166, 166);
+}
+::-webkit-scrollbar-thumb:active{
+  background-color: rgb(225, 22, 22);
+}
 *{
   margin: 0;
   padding: 0;
@@ -27,6 +39,7 @@ input{
 main{
   padding-top: 60px;
   margin: auto;
+  width: 1320px;
 }
 
 header{
@@ -105,13 +118,6 @@ header > div > img{
   margin: 20px 5px;
 
 }
-/* .pokeCard ul{
-  font-size: 1.1em;
-  color: rgba(0, 0, 0, 0.731);
-  font-family: 'Nunito', Arial, Helvetica, sans-serif;  
-  font-weight: 600;
-  list-style: none;
-} */
 
 .type{
   font-size: 1em;
@@ -129,5 +135,25 @@ header > div > img{
 
   header span{
     display: none;
+  }
+}
+@media (max-width:1100px) {
+  main{
+    width: 880px;
+  }
+}
+@media (max-width:880px) {
+  main{
+    width: 660px;
+  }
+}
+@media (max-width:660px) {
+  main{
+    width: 440px;
+  }
+}
+@media (max-width:440px) {
+  main{
+    width: 330px;
   }
 }
