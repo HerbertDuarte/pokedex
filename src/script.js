@@ -94,7 +94,6 @@ function searchPokemon(){
 
     if(searchResult[0]){
       searchResult.forEach(element => {
-        console.log('funcionou')
         return generatorCard(element.id, element.id, 0, searchDiv)
       })
       searchDiv.classList.remove('hide')
