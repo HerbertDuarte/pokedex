@@ -1,6 +1,8 @@
 const main = document.getElementById('main')
 const input = document.querySelector('input#search')
-var arrayPokemons = [{}]
+const [final, inicio] = [151, 1]
+
+var arrayPokemons = [{name:''}]
 
 async function fetchPokemon(pokemon){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
@@ -29,7 +31,7 @@ async function fetchPokemon(pokemon){
 }
 
 function generatorSingleCard(id, add=''){
-  if(arrayPokemons[id].type1 != undefined){
+  if(arrayPokemons[id].type1){
 
     main.innerHTML = add + (
     `<div class="pokeCard card${arrayPokemons[id].type0}">
@@ -58,43 +60,44 @@ function generatorSingleCard(id, add=''){
     )
   }
 }
-async function generatorCard(){
+async function generatorCard(start, final, clean=false){
 
-  main.innerHTML = ''
+  if(clean == 0){
+    main.innerHTML = ''
+  }
   
-  for(let i = 1; i<=4 ; i++){
+  for(let i = start; i<=final ; i++){
     await fetchPokemon(i) 
   }
-
 
   input.removeAttribute('disabled', 'disabled')
   input.placeholder = 'Type the pokemon name or id'
 
 }
 
-generatorCard()
+generatorCard(inicio,final,0)
 
-input.addEventListener('keyup', _.debounce(searchPokemon, 800))
+input.addEventListener('keyup', _.debounce(searchPokemon, 1000))
 
 function searchPokemon(){
   const rawText = input.value
   var text = rawText.toString().toLowerCase() 
   
   if(rawText.length == 0){
-    generatorCard()
+    generatorCard(inicio,final,0)
   }
   else{
     main.value = ''
     const searchResult = arrayPokemons.filter((element) => {
       element.name = '' + element.name
       element.name.toString()
-      return element.name.toLowerCase().includes(text) == true
+      return element.name.toLowerCase().includes(text) == true || text == element.id
     })
-    console.log(searchResult)
+
     if(searchResult[0]){
-      for(let i = 0; i > searchResult.length ; i++){
-        generatorSingleCard(searchResult[i].id)
-      }
+      searchResult.forEach(element => {
+        return generatorCard(element.id, element.id)
+      })
     }else{
       main. innerHTML = '<p class="noresult">nada encontrado</p>'
     }
