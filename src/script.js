@@ -1,10 +1,11 @@
 const main = document.getElementById('main')
+const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
 const [final, inicio] = [151, 1]
 
 var arrayPokemons = [{name:''}]
 
-async function fetchPokemon(pokemon){
+async function fetchPokemon(pokemon, div){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
   const img = data.sprites.front_default
   const name = data.name[0].toUpperCase() + data.name.slice(1)
@@ -23,51 +24,47 @@ async function fetchPokemon(pokemon){
       }
     }
   })
-
   arrayPokemons[data.id].gerarType1()
-
-  generatorSingleCard(data.id, main.innerHTML)
   
-}
+  if(arrayPokemons[data.id].type1){
 
-function generatorSingleCard(id, add=''){
-  if(arrayPokemons[id].type1){
-
-    main.innerHTML = add + (
-    `<div class="pokeCard card${arrayPokemons[id].type0}">
+    div.innerHTML += (
+    `<div class="pokeCard card${arrayPokemons[data.id].type0}">
     <div class="infos">
-    <p>${arrayPokemons[id].id}. ${arrayPokemons[id].name}</p>
-      <img src="${arrayPokemons[id].img}" alt="${arrayPokemons[id].name}">
+    <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
+      <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
     </div>
     <div class="divTypes">
-    <span class="type ${arrayPokemons[id].type0}">${arrayPokemons[id].type0}</span>
-    <span class="type ${arrayPokemons[id].type1}">${arrayPokemons[id].type1}</span>
+    <span class="type ${arrayPokemons[data.id].type0}">${arrayPokemons[data.id].type0}</span>
+    <span class="type ${arrayPokemons[data.id].type1}">${arrayPokemons[data.id].type1}</span>
     </div>
     </div>`
     )
 
   }else{
-    main.innerHTML = add + (
-    `<div id="app" class="pokeCard card${arrayPokemons[id].type0}">
+    div.innerHTML += (
+    `<div id="app" class="pokeCard card${arrayPokemons[data.id].type0}">
     <div class="infos">
-    <p>${arrayPokemons[id].id}. ${arrayPokemons[id].name}</p>
-      <img src="${arrayPokemons[id].img}" alt="${arrayPokemons[id].name}">
+    <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
+      <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
     </div>
     <div class="divTypes">
-    <span class="type ${arrayPokemons[id].type0}">${arrayPokemons[id].type0}</span>
+    <span class="type ${arrayPokemons[data.id].type0}">${arrayPokemons[data.id].type0}</span>
     </div>
     </div>`
     )
   }
+  
 }
-async function generatorCard(start, final, clean=false){
+
+async function generatorCard(start, final, clean=false, div){
 
   if(clean == 0){
-    main.innerHTML = ''
+    div.innerHTML = ''
   }
   
   for(let i = start; i<=final ; i++){
-    await fetchPokemon(i) 
+    await fetchPokemon(i, div) 
   }
 
   input.removeAttribute('disabled', 'disabled')
@@ -75,7 +72,7 @@ async function generatorCard(start, final, clean=false){
 
 }
 
-generatorCard(inicio,final,0)
+generatorCard(inicio,final,0, main)
 
 input.addEventListener('keyup', _.debounce(searchPokemon, 1000))
 
@@ -84,11 +81,12 @@ function searchPokemon(){
   var text = rawText.toString().toLowerCase() 
   
   if(rawText.length == 0){
-    generatorCard(inicio,final,0)
+    main.classList.remove('hide')
+    searchDiv.classList.add('hide')
   }
   else{
-    main.value = ''
-    const searchResult = arrayPokemons.filter((element) => {
+      main.classList.add('hide')
+      const searchResult = arrayPokemons.filter((element) => {
       element.name = '' + element.name
       element.name.toString()
       return element.name.toLowerCase().includes(text) == true || text == element.id
@@ -96,10 +94,13 @@ function searchPokemon(){
 
     if(searchResult[0]){
       searchResult.forEach(element => {
-        return generatorCard(element.id, element.id)
+        console.log('funcionou')
+        return generatorCard(element.id, element.id, 0, searchDiv)
       })
+      searchDiv.classList.remove('hide')
     }else{
-      main. innerHTML = '<p class="noresult">nada encontrado</p>'
+      searchDiv.innerHTML = '<p class="noresult">nada encontrado</p>'
+      searchDiv.classList.remove('hide')
     }
   }
 
