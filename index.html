@@ -5,18 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokedex</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/typescolor.css">
-  <link rel="stylesheet" href="/css/cardscolor.css">
+  <link rel="shortcut icon" href="assets/pokeball.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="typescolor.css">
   <link rel="stylesheet" href="cardscolor.css">
-  <script defer src="src/script.js"></script>
-  <link rel="shortcut icon" href="assets/pokeball.png" type="image/x-icon">
-  <script src="/src/lazysizes.min.js"></script>
   <meta class="color-bar" name="theme-color" content="#d92424" />
   <meta class="color-bar" name="apple-mobile-web-app-status-bar-style" content="#d92424" />
   <meta class="color-bar" name="msapplication-navbutton-color" content="#d92424" />
+  <script defer src="src/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
   <header>
@@ -25,7 +22,7 @@
       <span>Pokedex</span>
     </div>
 
-    <input onchange="searchPokemon(this.value)" class="searchBar" type="text" name="search" id="search" placeholder="Type the pokemon name or id...">
+    <input disabled class="searchBar" type="text" name="search" id="search" placeholder="Loading...">
   </header>
 
   <main id="main">

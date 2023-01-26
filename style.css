@@ -36,6 +36,10 @@ input{
   font-weight: 600;
 }
 
+input:disabled{
+  opacity: 0.3;
+}
+
 main{
   padding-top: 60px;
   margin: auto;
@@ -94,6 +98,11 @@ header > div > img{
 .searchBar:focus{
   outline: 0;
   border: 0;
+}
+.noresult{
+  text-align: center;
+  padding-top: 25px;
+  font-size: 1.2em;
 }
 
 .pokeCard{
