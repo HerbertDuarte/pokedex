@@ -98,7 +98,7 @@ function searchPokemon(){
       })
       searchDiv.classList.remove('hide')
     }else{
-      searchDiv.innerHTML = '<p class="noresult">not result founds!</p>'
+      searchDiv.innerHTML = '<p class="noresult">no result founds!</p>'
       searchDiv.classList.remove('hide')
     }
   }
