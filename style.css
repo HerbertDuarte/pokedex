@@ -109,6 +109,16 @@ header > div > img{
   font-size: 1.2em;
 }
 
+#alert{
+  text-align: center;
+}
+
+#alert i{
+  font-size: 4.3em;
+  color: rgb(108, 108, 108);
+  padding-top: 20px;
+}
+
 .pokeCard{
   height: 280px;
   width: 200px;
