@@ -1,7 +1,7 @@
 const main = document.getElementById('main')
 const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
-const [final, inicio] = [151, 1]
+const [final, inicio] = [9, 1]
 
 var arrayPokemons = [{name:''}]
 
@@ -11,6 +11,14 @@ async function fetchPokemon(pokemon, div){
   const name = data.name[0].toUpperCase() + data.name.slice(1)
   const type0 = data.types[0].type.name
   const pokeId = data.id
+  const hp = data.stats[0].base_stat
+  const attack = data.stats[1].base_stat
+  const defense = data.stats[2].base_stat
+  const spattack = data.stats[3].base_stat
+  const spdefense = data.stats[4].base_stat
+  const speed = data.stats[5].base_stat
+
+  const total = speed + defense + attack + spattack + spdefense + hp
   
   arrayPokemons.splice(data.id , 1, {
     id: data.id,
@@ -29,10 +37,20 @@ async function fetchPokemon(pokemon, div){
   if(arrayPokemons[data.id].type1){
 
     div.innerHTML += (
-    `<div class="pokeCard card${arrayPokemons[data.id].type0}">
+    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${arrayPokemons[data.id].type0}">
     <div class="infos">
     <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
       <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
+      <div class="stats">
+      <hr>
+      <p>HP : <span>${hp}</span> </p>
+      <p>Attack: <span>${attack}</span></p>
+      <p>Defense: <span>${defense}</span></p>
+      <p>Special-Attack: <span>${spattack}</span></p>
+      <p>Special-Defense: <span>${spdefense}</span></p>
+      <p>Speed: <span>${speed}</span></p>
+      <p>Total: <span>${total}</span></p>
+      </div>
     </div>
     <div class="divTypes">
     <span class="type ${arrayPokemons[data.id].type0}">${arrayPokemons[data.id].type0}</span>
@@ -43,10 +61,20 @@ async function fetchPokemon(pokemon, div){
 
   }else{
     div.innerHTML += (
-    `<div id="app" class="pokeCard card${arrayPokemons[data.id].type0}">
+    `<div id="app" onmouseover="showStats(this)" onmouseout="hideStats(this)" class=" pokeCard card${arrayPokemons[data.id].type0}">
     <div class="infos">
     <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
       <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
+      <div class="stats">
+      <hr>
+      <p>HP : <span>${hp}</span> </p>
+      <p>Attack: <span>${attack}</span></p>
+      <p>Defense: <span>${defense}</span></p>
+      <p>Special-Attack: <span>${spattack}</span></p>
+      <p>Special-Defense: <span>${spdefense}</span></p>
+      <p>Speed: <span>${speed}</span></p>
+      <p>Total: <span>${total}</span></p>
+      </div>
     </div>
     <div class="divTypes">
     <span class="type ${arrayPokemons[data.id].type0}">${arrayPokemons[data.id].type0}</span>
@@ -102,5 +130,11 @@ function searchPokemon(){
       searchDiv.classList.remove('hide')
     }
   }
+}
 
+function showStats(element){
+  element.classList.add('active')
+}
+function hideStats(element){
+  element.classList.remove('active')
 }
