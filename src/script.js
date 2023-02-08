@@ -3,7 +3,7 @@ const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
 const loading = document.querySelector('.circle')
 
-var [final, inicio] = [151, 1]
+var [final, inicio] = [3, 1]
 
 var arrayPokemons = [{name:''}]
 
@@ -45,19 +45,18 @@ async function fetchPokemon(pokemon, div){
   if(arrayPokemons[data.id].type1){
 
     div.innerHTML += (
-    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${arrayPokemons[data.id].type0}">
+    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="active pokeCard card${arrayPokemons[data.id].type0}">
     <div class="infos">
     <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
       <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
       <div class="stats">
-      <hr>
-      <p>HP : <span>${hp}</span> </p>
-      <p>Attack: <span>${attack}</span></p>
-      <p>Defense: <span>${defense}</span></p>
-      <p>Special-Attack: <span>${spattack}</span></p>
-      <p>Special-Defense: <span>${spdefense}</span></p>
-      <p>Speed: <span>${speed}</span></p>
-      <p>Total: <span>${total}</span></p>
+      <p><span>HP </span><span class="num">${hp}</span> </p>
+      <p><span>Attack </span><span class="num">${attack}</span></p>
+      <p><span>Defense </span><span class="num">${defense}</span></p>
+      <p><span>Special-Attack </span><span class="num">${spattack}</span></p>
+      <p><span>Special-Defense </span><span class="num">${spdefense}</span></p>
+      <p><span>Speed </span><span class="num">${speed}</span></p>
+      <p><span>Total </span><span class="num">${total}</span></p>
       </div>
     </div>
     <div class="divTypes">
@@ -74,14 +73,13 @@ async function fetchPokemon(pokemon, div){
     <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
       <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
       <div class="stats">
-      <hr>
-      <p>HP : <span>${hp}</span> </p>
-      <p>Attack: <span>${attack}</span></p>
-      <p>Defense: <span>${defense}</span></p>
-      <p>Special-Attack: <span>${spattack}</span></p>
-      <p>Special-Defense: <span>${spdefense}</span></p>
-      <p>Speed: <span>${speed}</span></p>
-      <p>Total: <span>${total}</span></p>
+      <p><span>HP </span><span class="num">${hp}</span> </p>
+      <p><span>Attack </span><span class="num">${attack}</span></p>
+      <p><span>Defense </span><span class="num">${defense}</span></p>
+      <p><span>Special-Attack </span><span class="num">${spattack}</span></p>
+      <p><span>Special-Defense </span><span class="num">${spdefense}</span></p>
+      <p><span>Speed </span><span class="num">${speed}</span></p>
+      <p><span>Total </span><span class="num">${total}</span></p>
       </div>
     </div>
     <div class="divTypes">
