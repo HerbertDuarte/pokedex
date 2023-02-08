@@ -5,6 +5,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap');
 
+@keyframes rotate {
+
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 ::-webkit-scrollbar{
   width: 10px;
   background-color: #FFf;
@@ -40,12 +47,26 @@ input:disabled{
   opacity: 0.3;
 }
 
+.circle{
+  z-index: 3;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);;
+  height: 50px;
+  width: 50px;
+  border-width: 8px;
+  border-style: outset;
+  margin: auto;
+  border-radius: 50%;
+  animation: rotate 0.8s linear infinite;
+}
+
 .hide{
   display: none;
 }
 
 main{
-  padding-top: 10px;
+  padding-top: 60px;
   margin: auto;
   width: 1320px;
 }
@@ -86,8 +107,9 @@ header > div > img{
   height: 100%;
 }
 
-.country{
-  width: 100%;
+/* .country{
+  width: 75%;
+  max-width: 660px;
   margin: auto;
   margin-top: 60px;
 }
@@ -102,7 +124,7 @@ header > div > img{
   border-radius: 6px;
   color: #444;
   font-weight: bold;
-}
+} */
 
 .searchBar{
   border: 0;

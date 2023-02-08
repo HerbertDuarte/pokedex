@@ -1,10 +1,18 @@
 const main = document.getElementById('main')
 const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
-const [final, inicio] = [9, 1]
+const loading = document.querySelector('.circle')
+
+var [final, inicio] = [151, 1]
 
 var arrayPokemons = [{name:''}]
 
+function showStats(element){
+  element.classList.add('active')
+}
+function hideStats(element){
+  element.classList.remove('active')
+}
 async function fetchPokemon(pokemon, div){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
   const img = data.sprites.front_default
@@ -32,7 +40,7 @@ async function fetchPokemon(pokemon, div){
       }
     }
   })
-  arrayPokemons[data.id].gerarType1()
+  if(data.types[0]) arrayPokemons[data.id].gerarType1()
   
   if(arrayPokemons[data.id].type1){
 
@@ -86,7 +94,6 @@ async function fetchPokemon(pokemon, div){
 }
 
 async function generatorCard(start, final, clean=false, div){
-
   if(clean == 0){
     div.innerHTML = ''
   }
@@ -98,9 +105,11 @@ async function generatorCard(start, final, clean=false, div){
   input.removeAttribute('disabled', 'disabled')
   input.placeholder = 'Type the pokemon name or id'
 
+  loading.classList.add('hide')
+  div.classList.remove('hide')
 }
 
-generatorCard(inicio,final,0, main)
+generatorCard(inicio, final, 0, main)
 
 input.addEventListener('keyup', _.debounce(searchPokemon, 1000))
 
@@ -130,11 +139,4 @@ function searchPokemon(){
       searchDiv.classList.remove('hide')
     }
   }
-}
-
-function showStats(element){
-  element.classList.add('active')
-}
-function hideStats(element){
-  element.classList.remove('active')
 }
