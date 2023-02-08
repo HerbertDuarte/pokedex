@@ -2,8 +2,26 @@ const main = document.getElementById('main')
 const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
 const loading = document.querySelector('.circle')
+const qlq = window.location.href.toString().toLowerCase()
+if(qlq.includes('johto')){
+  var [final, inicio] = [251, 152]
+}
+else if(qlq.includes('hoenn')){
+  var [final, inicio] = [386, 252]
+}
+else if(qlq.includes('sinnoh')){
+  var [final, inicio] = [493, 387]
+}
+else if(qlq.includes('unova')){
+  var [final, inicio] = [649, 494]
+}
+else if(qlq.includes('kalos')){
+  var [final, inicio] = [721, 650]
+}
+else{
+  var [final, inicio] = [151, 1]
+}
 
-var [final, inicio] = [151, 1]
 
 var arrayPokemons = [{name:''}]
 
@@ -18,6 +36,9 @@ async function fetchPokemon(pokemon, div){
   const img = data.sprites.front_default
   const name = data.name[0].toUpperCase() + data.name.slice(1)
   const type0 = data.types[0].type.name
+  if(data.types[1]){
+    var type1 = data.types[1].type.name
+  }
   const pokeId = data.id
   const hp = data.stats[0].base_stat
   const attack = data.stats[1].base_stat
@@ -34,21 +55,19 @@ async function fetchPokemon(pokemon, div){
     img : data.sprites.front_default,
     type0: data.types[0].type.name,
     type1: undefined,
-    gerarType1(){
+    gerarType1: function(){
       if(data.types[1]){
         this.type1 = data.types[1].type.name
       }
     }
   })
-  if(data.types[0]) arrayPokemons[data.id].gerarType1()
   
-  if(arrayPokemons[data.id].type1){
-
+  if(!data.types[1]){
     div.innerHTML += (
-    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${arrayPokemons[data.id].type0}">
+    `<div id="app" onmouseover="showStats(this)" onmouseout="hideStats(this)" class=" pokeCard card${type0}">
     <div class="infos">
-    <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
-      <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
+    <p>${pokeId}. ${name}</p>
+      <img src="${img}" alt="${name}">
       <div class="stats">
       <p><span>HP </span><span class="num">${hp}</span> </p>
       <p><span>Attack </span><span class="num">${attack}</span></p>
@@ -60,18 +79,20 @@ async function fetchPokemon(pokemon, div){
       </div>
     </div>
     <div class="divTypes">
-    <span class="type ${arrayPokemons[data.id].type0}">${arrayPokemons[data.id].type0}</span>
-    <span class="type ${arrayPokemons[data.id].type1}">${arrayPokemons[data.id].type1}</span>
+    <span class="type ${type0}">${type0}</span>
     </div>
     </div>`
     )
+  }
 
-  }else{
+  if(type1){
+
+
     div.innerHTML += (
-    `<div id="app" onmouseover="showStats(this)" onmouseout="hideStats(this)" class=" pokeCard card${arrayPokemons[data.id].type0}">
+    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
     <div class="infos">
-    <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
-      <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
+    <p>${pokeId}. ${name}</p>
+      <img src="${img}" alt="${name}">
       <div class="stats">
       <p><span>HP </span><span class="num">${hp}</span> </p>
       <p><span>Attack </span><span class="num">${attack}</span></p>
@@ -83,10 +104,12 @@ async function fetchPokemon(pokemon, div){
       </div>
     </div>
     <div class="divTypes">
-    <span class="type ${arrayPokemons[data.id].type0}">${arrayPokemons[data.id].type0}</span>
+    <span class="type ${type0}">${type0}</span>
+    <span class="type ${type1}">${type1}</span>
     </div>
     </div>`
     )
+
   }
   
 }
