@@ -45,7 +45,7 @@ async function fetchPokemon(pokemon, div){
   if(arrayPokemons[data.id].type1){
 
     div.innerHTML += (
-    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="active pokeCard card${arrayPokemons[data.id].type0}">
+    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${arrayPokemons[data.id].type0}">
     <div class="infos">
     <p>${arrayPokemons[data.id].id}. ${arrayPokemons[data.id].name}</p>
       <img src="${arrayPokemons[data.id].img}" alt="${arrayPokemons[data.id].name}">
