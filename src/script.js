@@ -3,7 +3,7 @@ const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
 const loading = document.querySelector('.circle')
 
-var [final, inicio] = [3, 1]
+var [final, inicio] = [151, 1]
 
 var arrayPokemons = [{name:''}]
 
