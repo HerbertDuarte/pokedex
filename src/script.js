@@ -10,10 +10,10 @@ else if(qlq.includes('hoenn')){
   var [final, inicio] = [386, 252]
 }
 else if(qlq.includes('sinnoh')){
-  var [final, inicio] = [493, 387]
+  var [final, inicio] = [494, 387]
 }
 else if(qlq.includes('unova')){
-  var [final, inicio] = [649, 494]
+  var [final, inicio] = [649, 495]
 }
 else if(qlq.includes('kalos')){
   var [final, inicio] = [721, 650]

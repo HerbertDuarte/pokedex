@@ -66,7 +66,7 @@ input:disabled{
 }
 
 main{
-  padding-top: 60px;
+  padding-top: 5px;
   margin: auto;
   width: 1320px;
 }
@@ -108,24 +108,27 @@ header > div > img{
   height: 100%;
 }
 
-/* .country{
-  width: 75%;
-  max-width: 660px;
+.country{
+  width: calc(100% - 60px);
   margin: auto;
-  margin-top: 60px;
+  text-align: center;
+  height: min-content;
+  padding-top: 70px;
+}
+.gen{
+  display: inline-table;
+  padding: 5px 2px;
 }
 
- select{
-  width: 100%;
-  margin: 0 20px;
-  margin: auto;
-  outline: 0;
-  border: 0;
+.gen a{
+  text-decoration: none;
   padding: 5px;
-  border-radius: 6px;
-  color: #444;
-  font-weight: bold;
-} */
+  color:#ccc;
+  border-radius: 7px;
+  display: inline-table;
+  width: 65px;
+  background-color: #5e5e5e;
+}
 
 .searchBar{
   border: 0;
