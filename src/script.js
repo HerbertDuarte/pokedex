@@ -19,7 +19,7 @@ else if(qlq.includes('kalos')){
   var [final, inicio] = [721, 650]
 }
 else{
-  var [final, inicio] = [15, 1]
+  var [final, inicio] = [151, 1]
 }
 
 
