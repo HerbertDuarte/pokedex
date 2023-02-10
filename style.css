@@ -176,7 +176,6 @@ header > div > img{
   text-align: center;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.347);
   overflow: hidden;
-  transition: all .4s;
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -189,6 +188,10 @@ header > div > img{
   font-family: 'Nunito', Arial, Helvetica, sans-serif;  
   font-weight: 500;
 }
+.active{
+  transition: all .6s;
+  transition-delay: 0ms;
+}
 
 .infos{
   display: flex;
@@ -196,6 +199,8 @@ header > div > img{
   align-items: center;
   flex-direction: column;
   height: 210px;
+  transition: all .3s;
+  transition-delay: 0ms;
 }
 
 .pokeCard img{
