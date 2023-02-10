@@ -22,15 +22,16 @@ else{
   var [final, inicio] = [151, 1]
 }
 
-
-var arrayPokemons = [{name:''}]
-
 function showStats(element){
   element.classList.add('active')
 }
 function hideStats(element){
   element.classList.remove('active')
 }
+
+
+var arrayPokemons = [{name:''}]
+
 async function fetchPokemon(pokemon, div){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
   const img = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
@@ -126,8 +127,9 @@ async function generatorCard(start, final, clean=false, div){
   input.removeAttribute('disabled', 'disabled')
   input.placeholder = 'Type the pokemon name or id'
 
-  loading.classList.add('hide')
-  div.classList.remove('hide')
+  // loading.classList.add('hide')
+  // div.classList.remove('hide')
+
 }
 
 generatorCard(inicio, final, 0, main)
