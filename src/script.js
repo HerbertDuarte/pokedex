@@ -64,7 +64,7 @@ async function fetchPokemon(pokemon, div){
   
   if(!data.types[1]){
     div.innerHTML += (
-    `<div id="app" onmouseover="showStats(this)" onmouseout="hideStats(this)" class=" pokeCard card${type0}">
+    `<div id="app" onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
     <div class="infos">
     <p>${pokeId}. ${name}</p>
       <img src="${img}" alt="${name}">
