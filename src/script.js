@@ -33,7 +33,7 @@ function hideStats(element){
 }
 async function fetchPokemon(pokemon, div){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
-  const img = data.sprites.front_default
+  const img = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
   const name = data.name[0].toUpperCase() + data.name.slice(1)
   const type0 = data.types[0].type.name
   if(data.types[1]){

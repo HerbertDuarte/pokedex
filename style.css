@@ -185,6 +185,7 @@ header > div > img{
 .pokeCard img{
   opacity: 1;
   height: 160px;
+  padding: 20px;
   margin: 10px 5px;
   transition: height .4s;
 }
