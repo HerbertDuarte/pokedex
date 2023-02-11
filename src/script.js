@@ -19,7 +19,7 @@ else if(qlq.includes('kalos')){
   var [final, inicio] = [721, 650]
 }
 else{
-  var [final, inicio] = [151, 1]
+  var [final, inicio] = [6, 6]
 }
 
 function showStats(element){
@@ -34,7 +34,10 @@ var arrayPokemons = [{name:''}]
 
 async function fetchPokemon(pokemon, div){
   const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json()
-  const img = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
+  // const img = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
+  // const img = data['sprites']['versions']['generation-vi']['x-y']['front_default']
+  // const img = data['sprites']['versions']['generation-iii']['firered-leafgreen']['front_default']
+  const img = data.sprites.front_default
   const name = data.name[0].toUpperCase() + data.name.slice(1)
   const type0 = data.types[0].type.name
   if(data.types[1]){
@@ -50,7 +53,7 @@ async function fetchPokemon(pokemon, div){
 
   const total = speed + defense + attack + spattack + spdefense + hp
   
-  arrayPokemons.splice(data.id , 1, {
+  arrayPokemons.splice( (data.id - inicio - 1 ) , 1, {
     id: data.id,
     name: data.name,
     img : data.sprites.front_default,
@@ -65,7 +68,7 @@ async function fetchPokemon(pokemon, div){
   
   if(!data.types[1]){
     div.innerHTML += (
-    `<div id="app" onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
+    `<div id="id-${pokeId}" onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
     <div class="infos">
     <p>${pokeId}. ${name}</p>
       <img src="${img}" alt="${name}">
@@ -90,7 +93,7 @@ async function fetchPokemon(pokemon, div){
 
 
     div.innerHTML += (
-    `<div onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
+    `<div id="id-${pokeId}" onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
     <div class="infos">
     <p>${pokeId}. ${name}</p>
       <img src="${img}" alt="${name}">
