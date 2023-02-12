@@ -19,7 +19,7 @@ else if(qlq.includes('kalos')){
   var [final, inicio] = [721, 650]
 }
 else{
-  var [final, inicio] = [6, 6]
+  var [final, inicio] = [151, 1]
 }
 
 function showStats(element){
@@ -65,7 +65,7 @@ async function fetchPokemon(pokemon, div){
   
   if(!data.types[1]){
     div.innerHTML += (
-    `<div id="id-${pokeId}" onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
+    `<div id="id-${pokeId}" class="pokeCard card${type0}">
     <div class="infos">
     <p>${pokeId}. ${name}</p>
       <img src="${img}" alt="${name}">
@@ -90,7 +90,7 @@ async function fetchPokemon(pokemon, div){
 
 
     div.innerHTML += (
-    `<div id="id-${pokeId}" onmouseover="showStats(this)" onmouseout="hideStats(this)" class="pokeCard card${type0}">
+    `<div id="id-${pokeId}" class="pokeCard card${type0}">
     <div class="infos">
     <p>${pokeId}. ${name}</p>
       <img src="${img}" alt="${name}">
@@ -124,6 +124,12 @@ async function generatorCard(start, final, clean=false, div){
     await fetchPokemon(i, div) 
   }
 
+  const cards = document.querySelectorAll('.pokeCard')
+
+  cards.forEach(element => {
+    element.setAttribute(`onmouseover`, `showStats(this)`)
+    element.setAttribute(`onmouseout`, `hideStats(this)`)
+  })
   input.removeAttribute('disabled', 'disabled')
   input.placeholder = 'Type the pokemon name or id'
 
