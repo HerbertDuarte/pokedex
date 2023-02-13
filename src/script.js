@@ -2,20 +2,20 @@ const main = document.getElementById('main')
 const searchDiv = document.getElementById('searchDiv')
 const input = document.querySelector('input#search')
 const loading = document.querySelector('.circle')
-const qlq = window.location.href.toString().toLowerCase()
-if(qlq.includes('johto')){
+const address = window.location.href.toString().toLowerCase()
+if(address.includes('johto')){
   var [final, inicio] = [251, 152]
 }
-else if(qlq.includes('hoenn')){
+else if(address.includes('hoenn')){
   var [final, inicio] = [386, 252]
 }
-else if(qlq.includes('sinnoh')){
+else if(address.includes('sinnoh')){
   var [final, inicio] = [494, 387]
 }
-else if(qlq.includes('unova')){
+else if(address.includes('unova')){
   var [final, inicio] = [649, 495]
 }
-else if(qlq.includes('kalos')){
+else if(address.includes('kalos')){
   var [final, inicio] = [721, 650]
 }
 else{
