@@ -50,7 +50,7 @@ async function fetchPokemon(pokemon, div){
 
   const total = speed + defense + attack + spattack + spdefense + hp
   
-  arrayPokemons.splice( (data.id - inicio - 1 ) , 1, {
+  arrayPokemons.splice( (data.id - inicio ) , 1, {
     id: data.id,
     name: data.name,
     img : data.sprites.front_default,
