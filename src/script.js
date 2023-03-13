@@ -19,7 +19,7 @@ else if(address.includes('kalos')){
   var [final, inicio] = [721, 650]
 }
 else{
-  var [final, inicio] = [151, 1]
+  var [final, inicio] = [151, 0
 }
 
 function showStats(element){
